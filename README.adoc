@@ -1,0 +1,24 @@
+= Maven 4 install issue
+
+Install fails when using mirrors and profile activation using bare negation of a `<property><name>` when the parent is not available in the mirror
+
+== Start a repository manager
+
+Use some kind of repository manager.
+Everything is currently configured to use https://reposilite.com/guide/about[Reposilite] listening on port 8080 as a repository manager.
+
+It can be brought up with `docker compose up` using the provided _compose.yaml_ file.
+
+== Deploy the parent pom
+
+We'll do the install to a local maven repo so the artifact won't be available to the dependent-project later.
+
+[,console]
+----
+$ git checkout v1.0.0
+$ cd parent-project
+$ ./mvnw --version
+$ ./mvnw clean deploy -Dmaven.repo.local=mavenRepoLocal
+$ cd ..
+$ git checkout main
+----

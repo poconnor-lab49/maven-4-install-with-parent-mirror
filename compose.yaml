@@ -1,0 +1,19 @@
+services:
+  reposilite:
+    image: dzikoysk/reposilite:3.5
+    ports:
+      - ${HOST_PORT}:${TARGET_PORT}
+    expose:
+      - ${HOST_PORT}
+    env_file:
+      - .env
+    environment:
+      - JAVA_OPTS=-Xmx${MEMORY} ${JAVA_COMPOSE_OPTS}
+      - REPOSILITE_OPTS=--port ${TARGET_PORT} ${REPOSILITE_COMPOSE_OPTS}
+    volumes:
+      - reposilite-data:/app/data
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+volumes:
+  reposilite-data: {}
