@@ -1,0 +1,3 @@
+= dependent-project
+
+Depends on `parent-project:1.0.0` to pin some versions

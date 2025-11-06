@@ -22,3 +22,30 @@ $ ./mvnw clean deploy -Dmaven.repo.local=mavenRepoLocal
 $ cd ..
 $ git checkout main
 ----
+
+== Install dependent-project with maven 3
+
+You should be back on `main` branch now
+
+[,console]
+----
+$ cd dependent-project
+$ ./mvnw --version
+$ ./mvnw help:active-profiles
+$ ./mvnw clean install
+$ cd ..
+----
+
+== Install dependent-project with maven 4 RC-4
+
+Time to see what maven 4 does
+
+[,console]
+----
+$ git checkout maven-4
+$ cd dependent-project
+$ ./mvnw --version
+$ ./mvnw help:active-profiles
+$ ./mvnw clean install
+$ cd ..
+----
